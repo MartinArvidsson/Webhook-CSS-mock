@@ -57,14 +57,14 @@ app.init = function(){
                 $(this).on("click",function(){
                    $('#issueComments tr').each(function(index){
                     if(!$(this).hasClass('title') && $(this).hasClass(issueCreate.issue_title)){
-                            if(!$(this).show())
-                            {
-                                $(this).show();
-                            }
-                            else
-                            {
-                                $(this).hide();
-                            }
+                        if($(this).is( ":visible" ))
+                        {
+                            $(this).hide();
+                        }
+                        else
+                        {
+                            $(this).show();
+                        }
                         }
                     });
                 });
