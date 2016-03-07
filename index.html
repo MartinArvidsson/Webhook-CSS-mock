@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+  <title>Socket.IO Webhook</title>
+  <!-- Compiled and minified CSS -->
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    
+    <div class="row">
+      <div class="input-field col l2 s12 offset-l5">
+        <select id="userNameDropDown">
+          <option value="0">All Users</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col l4 s12">
+        <table id="releases"class="centered striped">
+          <thead>
+            <tr class="title">
+              <th id="releaseTitle">
+                Releases
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="col l4 s12">
+        <table id="issueCreates" class="centered striped">
+          <thead>
+            <tr class ="title">
+              <th id="issuesTitle">
+                Issues
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="col l4 s12">
+        <table id="issueComments" class="centered striped">
+          <thead>
+            <tr class="title">
+              <th id="issueCommentTitle">
+                IssueComments
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+    <script type="text/javascript" src="/socket.js"></script>
+      <!-- Compiled and minified JavaScript -->
+  </body>
+</html>

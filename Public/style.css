@@ -1,0 +1,36 @@
+/*body{*/
+/*    background-color:white;*/
+/*}*/
+/*#releases{*/
+/*    width:30%;*/
+/*    float: left;*/
+/*    display: inline-block;*/
+/*    background: #eee;*/
+/*    border-right:1px solid black;*/
+/*}*/
+/*#issueCreates{*/
+/*    width:30%;*/
+/*    float: left;*/
+/*    display: inline-block;*/
+/*}*/
+/*#issueComments{*/
+/*    width:30%;*/
+/*    float: left;*/
+/*    display: inline-block;*/
+/*    background: #eee;*/
+/*    border-left:1px solid black;*/
+/*}*/
+/*#releasetitle{*/
+/*    text-align:center;*/
+/*}*/
+
+/*td{*/
+/*    margin: 5px;*/
+/*    border-radius: 10px;*/
+/*    padding:6px;*/
+/*    width:100%;*/
+/*}*/
+
+.centerText{
+    text-align:center;
+}
