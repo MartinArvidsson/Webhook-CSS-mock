@@ -8,10 +8,11 @@ app.init = function(){
         
         let releaseCreator = "<p>Username: " + release.release_author + " </p>";
         let releaseTagname = "<p>Title: " + release.release_name + "</p>";
+        let releaseBody = "<p>Information: " + release.release_body + "</p>";
         let releaseLink = "<p><a href ='" + release.release_url + "'>Release Link</a></p>";
         let releaseDownloadLink = "<p><a href='"+ release.release_zipDownload + "'>Download Link</a></p>";
         
-        $('#releases tbody').prepend("<tr class='" + release.release_author + "'><td>" + releaseCreator + releaseTagname + releaseLink + releaseDownloadLink);
+        $('#releases tbody').prepend("<tr class='" + release.release_author + " maxheight '><td>" + releaseCreator + releaseTagname + releaseBody + releaseLink + releaseDownloadLink);
         
         console.log(release);
         app.search.add(release.release_author);
@@ -27,7 +28,7 @@ app.init = function(){
         let issueCommentbody = "<p>Comment: " + issueComment.issue_commentBody + "</p>";
         let issueStatus = "<p>Status: " + issueComment.issue_status + "</p>";
         
-        $('#issueComments tbody').prepend("<tr class='" + issueComment.issue_title + "'><td>" + issueOwner + issueTitle + issueCommenter + issueCommentbody + issueStatus);
+        $('#issueComments tbody').prepend("<tr class='" + issueComment.issue_title + " maxheight'><td>" + issueOwner + issueTitle + issueCommenter + issueCommentbody + issueStatus);
         //console.log(issueComment);
         
         $('#issueComments tr').each(function(index){
@@ -47,7 +48,7 @@ app.init = function(){
         let issueStatus = "<p>Status: " + issueCreate.issue_status + "</p>";
         let issueMilestone = "<p>Milestones: " + issueCreate.issue_milestone + "</p>";
         let issueLink = "<p><a href='"+ issueCreate.issue_url + "'>Issue direct link </a></p>";
-        let newIssue = "<tr class='" + issueCreate.issue_owner +"' id='" + issueCreate.issue_title + "' ><td>"
+        let newIssue = "<tr class='" + issueCreate.issue_owner +" maxheight' id='" + issueCreate.issue_title + "' ><td>"
         + issueCreator + issueTitle + issueStatus + issueMilestone + issueLink;
         
         $('#issueCreates tbody').prepend(newIssue);
@@ -55,15 +56,22 @@ app.init = function(){
         $('#issueCreates tr').each(function(index){
             if(!$(this).hasClass('title') && $(this).hasClass(issueCreate.issue_owner)){
                 $(this).on("click",function(){
+                    let that = this;
                    $('#issueComments tr').each(function(index){
                     if(!$(this).hasClass('title') && $(this).hasClass(issueCreate.issue_title)){
                         if($(this).is( ":visible" ))
                         {
                             $(this).hide();
+                            $(that).css({
+                                'background-color':'#F2F2F2'
+                            });
                         }
                         else
                         {
                             $(this).show();
+                            $(that).css({
+                                'background-color':'#727272'
+                            });
                         }
                         }
                     });
@@ -77,11 +85,6 @@ app.init = function(){
         app.search.update();
     });
     app.search.initSearch();
-};
-
-app.search.findComments = function()
-{
-    console.log("ASDF");
 };
 
 app.search.initSearch = function(){
