@@ -15,27 +15,16 @@ const issueCreated = "opened";
 const issueClosed = "closed";
 const issueComment = "created";
 
+io.on('connection', function(){
+  //HÄMTA FRÅN DATABAS
+  console.log("Should connect to database now!");
+}); 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/Public'));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
-  
-  let releases = [];
-  let issues = [];
-  let issueComments = [];
-  
-  //HÄMTA FRÅN DATABAS
-  
-  let toSendToClient = {};
-  toSendToClient.releases = releases;
-  toSendToClient.issues = issues;
-  toSendToClient.issueComment = issueComments;
-  
-  //ANVÄNDA EJS?
-  /*res.render('index', {
-    webhooks: toSendToClient
-  });*/
   res.sendFile(__dirname + '/index.html');
 });
 
@@ -56,6 +45,12 @@ app.post('/', function(req, res){
         issueCommentObject.issue_commenter = req.body.sender.login;         //Who did the comment.
         issueCommentObject.organization = req.body.organization.login;      //Organization
         
+        issueCommentObject.organization_avatar = req.body.organization.avatar_url;
+        issueCommentObject.organization_github_url = req.body.repository.owner.html_url;
+        
+        issueCommentObject.issue_commenter_avatar = req.body.sender.avatar_url;
+        issueCommentObject.issue_commenter_github_url = req.body.sender.html_url;
+        
         io.emit('issue commented', issueCommentObject);
         console.log(issueCommentObject);
         
@@ -74,7 +69,13 @@ app.post('/', function(req, res){
         issueCreatedObject.issue_url = req.body.issue.html_url;             //URL to issue
         issueCreatedObject.repo_url = req.body.repository.html_url;         // URL to repository
         issueCreatedObject.issue_creator = req.body.sender.login;           // Who created issue
-        issueCreatedObject.organization = req.body.organization.login;      //Organization
+        issueCreatedObject.organization = req.body.organization.login;        //Organization
+        
+        issueCreatedObject.organization_avatar = req.body.organization.avatar_url;
+        issueCreatedObject.organization_github_url = req.body.repository.owner.html_url;
+        
+        issueCreatedObject.issue_creator_avatar = req.body.sender.avatar_url;
+        issueCreatedObject.issue_creator_github_url = req.body.sender.html_url;
         
         io.emit('issue created', issueCreatedObject);
         
@@ -96,6 +97,13 @@ app.post('/', function(req, res){
         releaseObject.release_zipDownload = req.body.release.zipball_url;   // Download of .zip
         releaseObject.release_creator = req.body.sender.login;              // Who did the release that caused a webhook response.
         releaseObject.organization = req.body.organization.login;           //Organization
+        
+        releaseObject.organization_avatar = req.body.organization.avatar_url;
+        releaseObject.organization_github_url = req.body.repository.owner.html_url;
+        
+        releaseObject.release_creator_avatar = req.body.sender.avatar_url;
+        releaseObject.release_creator_github_url = req.body.sender.html_url;
+        
         io.emit('release created', releaseObject);
         
         console.log(releaseObject);

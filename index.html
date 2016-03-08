@@ -12,17 +12,16 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
     
-    <div class="row">
-      <div class="input-field col l2 s12 offset-l5">
-        <select id="userNameDropDown">
-          <option value="0">All Users</option>
-        </select>
+    <div class="row headerstyle z-depth-2">
+      <img src="LNUlogga.png" alt="LNU Logotype" class="logotype">
+      <div class="input-field searchfield">
+        <input type="text" id="userNameDropDown" placeholder="Sök:"/>
       </div>
     </div>
     
-    <div class="row">
-      <div class="col l4 s12">
-        <table id="releases"class="centered bordered">
+    <div class="row divheight">
+      <div class="col l4 s12 tables overflow">
+        <table id="releases"class="centered bordered tables highlight">
           <thead>
             <tr class="title">
               <th id="releaseTitle">
@@ -36,8 +35,8 @@
         </table>
       </div>
       
-      <div class="col l4 s12">
-        <table id="issueCreates" class="centered bordered">
+      <div class="col l4 s12 tables overflow">
+        <table id="issueCreates" class="centered bordered tables highlight">
           <thead>
             <tr class ="title">
               <th id="issuesTitle">
@@ -51,8 +50,8 @@
         </table>
       </div>
       
-      <div class="col l4 s12">
-        <table id="issueComments" class="centered bordered">
+      <div class="col l4 s12 tables overflow">
+        <table id="issueComments" class="centered bordered tables highlight">
           <thead>
             <tr class="title">
               <th id="issueCommentTitle">
