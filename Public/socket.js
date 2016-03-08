@@ -12,7 +12,7 @@ app.init = function(){
         let releaseLink = "<p><a href ='" + release.release_url + "'>Release Link</a></p>";
         let releaseDownloadLink = "<p><a href='"+ release.release_zipDownload + "'>Download Link</a></p>";
         
-        $('#releases tbody').prepend("<tr class='" + release.release_author + " maxheight '><td>" + releaseCreator + releaseTagname + releaseBody + releaseLink + releaseDownloadLink);
+        $('#releases tbody').prepend("<tr class='" + release.release_author + " maxheight'><td>" + releaseCreator + releaseTagname + releaseBody + releaseLink + releaseDownloadLink);
         
         console.log(release);
         app.search.add(release.release_author);
